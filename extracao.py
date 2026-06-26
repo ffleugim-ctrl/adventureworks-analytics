@@ -6,7 +6,6 @@
 
 import pyodbc
 import pandas as pd
-
 # --- CONEXÃO ---
 # Aqui a gente define como o Python vai se conectar ao SQL Server
 # Trusted_Connection=yes significa autenticação do Windows (sem senha)
