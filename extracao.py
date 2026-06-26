@@ -65,6 +65,20 @@ WHERE edh.EndDate IS NULL
 
 df_rh = pd.read_sql(query_rh, conn)
 print(f"RH: {len(df_rh)} registros extraídos")
+# --- SALVANDO OS DADOS ---
+# Exporta cada DataFrame como CSV na pasta 'dados_brutos'
+# Isso simula a camada Bronze da arquitetura medallion
+
+import os
+
+# Cria a pasta se não existir
+os.makedirs("dados_brutos", exist_ok=True)
+
+df_producao.to_csv("dados_brutos/producao.csv", index=False)
+df_vendas.to_csv("dados_brutos/vendas.csv", index=False)
+df_rh.to_csv("dados_brutos/rh.csv", index=False)
+
+print("Arquivos salvos em dados_brutos/")
 
 conn.close()
 print("Extração concluída!")
